@@ -10,6 +10,6 @@ Current Skills
 
 Goal
 
-To become a SOC Analyst / Security Analyst
+To become a pentester
 
 I will upload my daily practice and labs here.
