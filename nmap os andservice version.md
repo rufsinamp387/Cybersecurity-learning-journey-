@@ -16,6 +16,10 @@
 
 
 
+
+![nmap2](https://github.com/user-attachments/assets/6c25e496-1010-4134-9376-865ed5342e93)
+
+
 2: The command nmap -O -sV 192.168.1.1 combines Operating System detection with Service Version detection to create a highly detailed profile of the target. 
 
   Key Components
