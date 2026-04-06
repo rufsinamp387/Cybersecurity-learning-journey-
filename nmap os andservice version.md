@@ -7,6 +7,8 @@
   -O: The specific flag that enables OS fingerprinting. Nmap sends a series of TCP and UDP packets to the target and 
   compares the response patterns against a database of known operating systems.
   192.168.1.1: The target IP address, commonly the default gateway for many home routers. 
+
+  -scans the default 1000 most common ports
   
   Key Requirements & Considerations
   Privileges: You must run this command with administrative (root/sudo) privileges because OS detection requires raw packet access.
@@ -44,5 +46,33 @@
 
   
   Privileges: This scan requires root or sudo permissions because it uses raw packets for OS fingerprinting.
-  Scan Time: This command will take significantly longer than a standard port scan because Nmap must wait for service banners and exchange multiple packets to verify versions.
+  Scan Time: This command will take significantly longer than a standard port scan because Nmap must wait for service banners and exchange multiple packets to
+  verify versions.
   Stealth: This is an "active" and relatively "noisy" scan that is easily detected by Intrusion Detection Systems (IDS). 
+
+3: 1) nmap -A 192.168.1.1 -p-
+
+   What this command does:
+  
+  -A (Aggressive): Enables OS detection, service version detection, default script scanning (NSE), and traceroute all at once .
+  192.168.1.1: Targets the specific IP address (usually your local router or gateway) .
+  
+  -p- (All Ports): Forces Nmap to scan all 65,535 ports instead of the default top 1,000 . 
+  
+  Why this is a "Heavy" Scan:
+  
+  Time-Consuming: Scanning every single port while trying to determine the version of every service found takes significantly longer than a standard scan .
+  Highly Visible: Because it interacts deeply with services and runs scripts, it is very likely to be flagged by firewalls or Intrusion Detection Systems (IDS) .
+  Resource Intensive: It places a higher load on both your machine and the target device's CPU/memory 
+
+
+  2) nmap -A 192.168.1.1 -p 80,443
+
+     scans only ports 80 and 443
+
+  3) nmap -A 192.168.1.1 -p 1-1024
+     
+     scans all ports from 1 to 1024
+
+
+  
