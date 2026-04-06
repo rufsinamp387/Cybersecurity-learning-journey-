@@ -34,6 +34,10 @@
   Increased Accuracy: If -O reports a Linux kernel and -sV finds OpenSSH for Windows, you know there may be a proxy or port forwarding involved.
   Vulnerability Mapping: Knowing exact version numbers via -sV is essential for identifying specific CVEs (vulnerabilities) that might affect the device.
   Fingerprinting: Version detection can sometimes provide "hints" that help the OS detection engine make a more certain guess. 
+
+
+  ![nmap1](https://github.com/user-attachments/assets/9388749f-a3dc-4303-8ff4-814a5f43b3be)
+
   
   Privileges: This scan requires root or sudo permissions because it uses raw packets for OS fingerprinting.
   Scan Time: This command will take significantly longer than a standard port scan because Nmap must wait for service banners and exchange multiple packets to verify versions.
