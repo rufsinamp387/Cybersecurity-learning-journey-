@@ -15,4 +15,5 @@ Visibility: Completed connections are logged by most services and firewalls, mak
 
 Privileges: Unlike the default SYN scan (-sS), the -sT scan does not require root/sudo privileges to run.
 
-![NMAP3](https://github.com/user-attachments/assets/1e9beb13-2d82-43ce-8d7e-ca4599f3d8e3)
+
+![nmap4](https://github.com/user-attachments/assets/0fb49c22-9b1e-44df-a7f0-dfadfde8b930)
