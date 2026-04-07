@@ -1,19 +1,40 @@
-nmap -sT 192.168.1.1 -p 21-5789
+1)  nmap -sT 192.168.1.1 -p 21-5789
+  
+    Command Breakdown
+    
+    -sT: Performs a TCP Connect Scan, completing the full three-way handshake.
+    
+    -p 21-5789: Instructs Nmap to scan every port from 21 through 5789. 
+    
+    
+    Key Considerations for this Range
+    
+    Scanning Time: Scanning over 5000 ports using a TCP Connect scan can be slow because each port requires a full connection attempt.
+    
+    Visibility: Completed connections are logged by most services and firewalls, making this scan easy to detect.
+    
+    Privileges: Unlike the default SYN scan (-sS), the -sT scan does not require root/sudo privileges to run.
+    
+    
+    ![nmap4](https://github.com/user-attachments/assets/0fb49c22-9b1e-44df-a7f0-dfadfde8b930)
 
-Command Breakdown
 
--sT: Performs a TCP Connect Scan, completing the full three-way handshake.
-
--p 21-5789: Instructs Nmap to scan every port from 21 through 5789. 
+2) nmap -sT 192.168.1.1 -p
 
 
-Key Considerations for this Range
+    This command is a valid Nmap scan that combines a TCP Connect Scan for port analysis with a TCP SYN Ping for host discovery. 
 
-Scanning Time: Scanning over 5000 ports using a TCP Connect scan can be slow because each port requires a full connection attempt.
+    Command Breakdown
+   
+     -sT (TCP Connect Scan): Performs a full three-way handshake to determine if ports are open. This is the standard scan type for non-root users.
+    
+      192.168.1.1: The target IP address.
+   
+     -PS20-1001 (TCP SYN Ping): Tells Nmap to use a TCP SYN packet to probe ports 20 through 1001 to see if the host is "alive" before starting the actual scan.
 
-Visibility: Completed connections are logged by most services and firewalls, making this scan easy to detect.
 
-Privileges: Unlike the default SYN scan (-sS), the -sT scan does not require root/sudo privileges to run.
-
-
-![nmap4](https://github.com/user-attachments/assets/0fb49c22-9b1e-44df-a7f0-dfadfde8b930)
+   How This Command Executes
+   
+   Host Discovery Phase: Nmap sends SYN packets to the range 20–1001. If any port in that range responds (with a SYN/ACK or RST), Nmap considers the host "up".
+   Port Scanning Phase: Once confirmed "up," Nmap performs a full TCP Connect scan on the default 1,000 most common ports. 
+ 
