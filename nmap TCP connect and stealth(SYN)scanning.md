@@ -2,10 +2,21 @@
   
     Command Breakdown
     
-    -sT: Performs a TCP Connect Scan, completing the full three-way handshake.
+    -sT: Performs a TCP Connect Scan, completing the full three-way handshake(SYN, SYN/ACK, ACK)
     
     -p 21-5789: Instructs Nmap to scan every port from 21 through 5789. 
+
+
+
+    Expected Outcomes
     
+    For each port in the range, Nmap will report one of these primary states:
+    
+      Open: A service is actively listening and accepted the full connection.
+    
+      Closed: The host responded with an RST (Reset) packet, indicating no service is listening on that port.
+    
+      Filtered: No response was received (or an ICMP error was returned), usually meaning a firewall is blocking the probes. 
     
     Key Considerations for this Range
     
@@ -19,7 +30,7 @@
     ![nmap4](https://github.com/user-attachments/assets/0fb49c22-9b1e-44df-a7f0-dfadfde8b930)
 
 
-2) nmap -sT 192.168.1.1 -p
+1) nmap -sT 192.168.1.1 -PS20-1001 
 
 
     This command is a valid Nmap scan that combines a TCP Connect Scan for port analysis with a TCP SYN Ping for host discovery. 
